@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8"  ng-app="App" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en" > <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Allows older versions of IE to render pages following standards the best possible -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Uncomment to make IE8 render like IE7 -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title></title>
+
+    <link href="stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/intlTelInput.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/account_edit.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js" type="text/javascript"></script>
+    <script src="javascripts/validation.js" type="text/javascript"></script>  
+  </head>
+
+<body ng-app="validationApp">
+<div class="page-wrap">
+  <div class="page-content content" ui-view="">
+    <div class="content" ng-controller="validationController">
+      <h2><span>Edit Personal Information</span></h2>   
+      <form name="accountSettings" ng-submit="submitForm()" novalidate>
+        <div class="small-12 large-8 left">
+          <div class="panel secondary">
+            <div class="row">
+              <div class="large-7 small-12 columns">
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" ng-model="user.firstName" required />
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-7 small-12 columns">
+                <label for="last_name">Middle Name</label>
+                <input type="text" placeholder="Steele" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-7 small-12 columns">
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" ng-model="user.lastName" placeholder="Parkinson" required />
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-7 small-12 columns">
+                <label for="first_name">Email Address</label>
+                <input type="text" placeholder="logansparkinson@gmail.com" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-7 small-12 columns">
+                <label for="user_email">Phone Number</label>
+                <input type="tel" id="mobile-number" placeholder="+1 (704) 555-4567" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-7 small-12 columns">
+                <label for="first_name">Street Address</label>
+                <input type="text" /> 
+              </div>
+            </div>
+            <div class="row" >
+              <div class="large-7 small-12 columns">
+                <label for="first_name">Street Address Continued (Suite, Apt.)</label>
+                <input type="text" /> 
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="large-5 small-12 columns">
+                <label for="">City</label>
+                <input type="text" />
+              </div>
+              <div class="large-3 small-12 columns">
+                <label for="">State</label>
+                <select class="custom dropdown medium account-dropdown" "zurb-select" name="" id="customDropdown">
+                  <option value="">Select</option>
+                </select>
+              </div>
+              <div class="large-4 small-12 columns">
+                <label for="">Postal</label>
+                <input type="text" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-5 small-12 columns">
+                <label for="">Country</label>
+                <select class="custom dropdown medium account-dropdown" "zurb-select" name="" id="customDropdown">
+                  <option value="">Select</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 large-5 columns">
+                <label for="">Date of Birth</label>
+                <input type="text" placeholder="Birthdate">
+              </div>
+            </div>
+            <div class="radio-buttons-row">
+              <div class="large-6 columns">
+                <label for="">Gender</label>
+                <div class="large-4 columns">
+                  <input type="radio" input-label='' input-id='user_gender_female' input-value='female' ng-model="user.gender" />
+                  Female
+                </div>
+                <div class="large-4 columns left">
+                  <input type="radio" input-label='' input-id='user_gender_male'  input-value='male' ng-model="user.gender" />
+                  Male
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 large-12 columns">
+                <label for="user_avatar">Avatar</label>
+                <img class="avatar" src="img/logan_parkinson_portrait.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="large-3 left" ng-show="(accountSettings.firstName.$invalid && !accountSettings.firstName.$pristine) || (accountSettings.lastName.$invalid && !accountSettings.firstName.$pristine)">
+          <div class="validation name">
+            <div class="error">
+              First and Last Name are required
+            </div>
+            <div class="triangle"></div>
+          </div>
+        </div>
+        <div class="small-12 large-8 left">
+          <div class="panel secondary">
+            <div class="row">
+              <div class="large-12 small-12 columns">
+                <button>Update My Account</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </content>
+  </div>
+</div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="javascripts/intlTelInput.min.js" type="text/javascript"></script>
+    <script>
+      $("#mobile-number").intlTelInput();
+    </script>
+</body>
+</html>
