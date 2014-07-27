@@ -38,6 +38,17 @@
 	z-index: 0;
 	transform: rotate(-145deg) skewX(-20deg) scale(1,.866);
 	box-shadow: 0px 0px 5px #bbb;
+  .invalid & {
+    background-color: #e79300;
+  }
+}
+
+.errorContainer {
+  float: left;
+  height: 0;
+  top: -61px;
+  left: 200%;
+  position: relative;
 }
 
 .error {
@@ -47,18 +58,27 @@
 	font-size: 14px;
 	width: 100%;
   height: 50px;
-	padding: 10px;
+  line-height: 50px;
+	padding: 0 10px;
 	color: #fff;
 	box-shadow: 2px 3px 5px #bbb;
 	z-index: 1000;
 	position: relative;
+  .invalid & {
+    background-color: #e79300;
+  }
 }
 
 .validation {
 	float: left;
 	position: relative;
-	&.name {
-		top: 120px;
-		left: 10px;
-	}
+}
+
+form.accountSettings .ng-dirty.ng-invalid {
+  background-color: #faf1e1;
+  border-color: orange;
+  &.ng-invalid-required {
+    background: #FAEBEB;
+    border-color: #c33;
+  }
 }
